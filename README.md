@@ -1,2 +1,2 @@
-# mabdo
-Computational Linguist Profile.
+# Muhammad S. Abdo
+Computational Linguist.
