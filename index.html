@@ -1,644 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad S. Abdo | Computational Linguist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover:after {
-            width: 100%;
-        }
-        .skill-pill {
-            transition: all 0.3s ease;
-        }
-        .skill-pill:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .publication-card {
-            transition: all 0.3s ease;
-        }
-        .publication-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad S. Abdo | Computational Linguist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+    .nav-link { position: relative; }
+    .nav-link:after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: #3b82f6; transition: width 0.3s ease; }
+    .nav-link:hover:after { width: 100%; }
+    .skill-pill { transition: all 0.3s ease; }
+    .skill-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
+    .publication-card { transition: all 0.3s ease; }
+    .publication-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+    #vanta-bg {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
-    <div id="vanta-bg" class="fixed inset-0 -z-10 opacity-20"></div>
-    
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-xl font-semibold text-gray-900 flex items-center">
-                        <i data-feather="cpu" class="mr-2 text-blue-500"></i>
-                        <span>Muhammad S. Abdo</span>
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
-                    <a href="#research" class="nav-link text-gray-700 hover:text-blue-600">Research</a>
-                    <a href="#publications" class="nav-link text-gray-700 hover:text-blue-600">Publications</a>
-                    <a href="#teaching" class="nav-link text-gray-700 hover:text-blue-600">Teaching</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="menu-toggle" class="text-gray-500 hover:text-gray-900">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
-                <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Research</a>
-                <a href="#publications" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Publications</a>
-                <a href="#teaching" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Teaching</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
-            </div>
-        </div>
-    </nav>
+  <div id="vanta-bg"></div>
 
-    <!-- Hero Section -->
-    <header class="hero-gradient py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Muhammad S. Abdo</h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-blue-600 mb-6">Computational Linguist</h2>
-                    <p class="text-lg text-gray-700 mb-8">Arabic NLP, collocations, word sense disambiguation, dialect identification, computational semantics and pragmatics, knowledge graphs.</p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Contact Me</a>
-                        <a href="#research" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">My Research</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
-                    <div class="relative">
-                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                            <img src="https://raw.githubusercontent.com/Muhsabrys/mabdo/refs/heads/main/Photos/profile.jpeg" alt="Muhammad S. Abdo" class="w-full h-full object-cover">
-                        </div>
-                        <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-md">
-                            <div class="flex items-center">
-                                <i data-feather="award" class="text-yellow-500 mr-2"></i>
-                                <span class="font-medium">PhD Candidate</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="text-xl font-semibold text-gray-900 flex items-center">
+            <i data-feather="cpu" class="mr-2 text-blue-500"></i>
+            <span>Muhammad S. Abdo</span>
+          </a>
         </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Biography</h3>
-                    <p class="text-gray-600 mb-6">Dual-major PhD candidate in Computational Linguistics and Middle Eastern Languages & Cultures at Indiana University Bloomington. My research focuses on Arabic Natural Language Processing with applications in dialect identification, word sense disambiguation, and computational semantics.</p>
-                    <p class="text-gray-600 mb-6">With a background in English Linguistics and extensive teaching experience, I bridge the gap between theoretical linguistics and practical computational applications, particularly for Arabic language technologies.</p>
-                    
-                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                        <h4 class="font-semibold text-blue-800 mb-3 flex items-center">
-                            <i data-feather="info" class="mr-2"></i> Quick Facts
-                        </h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <i data-feather="map-pin" class="text-blue-500 mr-2 mt-1"></i>
-                                <span>Based in Bloomington, Indiana, USA</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="book" class="text-blue-500 mr-2 mt-1"></i>
-                                <span>106 Google Scholar citations</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="globe" class="text-blue-500 mr-2 mt-1"></i>
-                                <span>Native Arabic, fluent English, intermediate Persian</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div data-aos="fade-left">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Education</h3>
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-blue-500 pl-5 py-1">
-                            <h4 class="font-bold text-gray-800">Dual-major PhD (Computational Linguistics; Middle Eastern Languages & Cultures)</h4>
-                            <p class="text-gray-600">Indiana University Bloomington</p>
-                            <p class="text-sm text-gray-500">Aug 2022 – present</p>
-                        </div>
-                        <div class="border-l-4 border-blue-300 pl-5 py-1">
-                            <h4 class="font-bold text-gray-800">MA in English Linguistics</h4>
-                            <p class="text-gray-600">Ain Shams University (Al-Alsun)</p>
-                            <p class="text-sm text-gray-500">Jan 2021</p>
-                        </div>
-                        <div class="border-l-4 border-blue-200 pl-5 py-1">
-                            <h4 class="font-bold text-gray-800">PGCE (Postgraduate Certificate in Education)</h4>
-                            <p class="text-gray-600">Monofiya University</p>
-                            <p class="text-sm text-gray-500">Aug 2018</p>
-                        </div>
-                        <div class="border-l-4 border-blue-100 pl-5 py-1">
-                            <h4 class="font-bold text-gray-800">BA in English Language and Literature</h4>
-                            <p class="text-gray-600">Benha University</p>
-                            <p class="text-sm text-gray-500">Jun 2013</p>
-                        </div>
-                    </div>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-800 mt-10 mb-6">Affiliations</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">Indiana University Bloomington — Linguistics</span>
-                        <span class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">Indiana University Bloomington — MELC</span>
-                    </div>
-                </div>
-            </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+          <a href="#research" class="nav-link text-gray-700 hover:text-blue-600">Research</a>
+          <a href="#publications" class="nav-link text-gray-700 hover:text-blue-600">Publications</a>
+          <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
+          <a href="#teaching" class="nav-link text-gray-700 hover:text-blue-600">Teaching</a>
+          <a href="#essays" class="nav-link text-gray-700 hover:text-blue-600">Essays</a>
+          <a href="#codes" class="nav-link text-gray-700 hover:text-blue-600">Codes</a>
+          <a href="#artifacts" class="nav-link text-gray-700 hover:text-blue-600">Artifacts</a>
+          <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
         </div>
-    </section>
-
-    <!-- Research Section -->
-    <section id="research" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Research Interests</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
-                    <div class="text-blue-500 mb-4">
-                        <i data-feather="globe" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Arabic NLP</h3>
-                    <p class="text-gray-600">Developing tools and models specifically for Arabic language processing, including dialect identification and morphological analysis.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
-                    <div class="text-blue-500 mb-4">
-                        <i data-feather="book" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Collocations</h3>
-                    <p class="text-gray-600">Researching Arabic collocations for language instruction and automated assessment systems.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
-                    <div class="text-blue-500 mb-4">
-                        <i data-feather="code" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Word Sense Disambiguation</h3>
-                    <p class="text-gray-600">Developing methods to automatically determine the correct meaning of words in context for Arabic.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
-                    <div class="text-blue-500 mb-4">
-                        <i data-feather="map" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Dialect Identification</h3>
-                    <p class="text-gray-600">Creating models to identify and classify Arabic dialects in text, particularly from social media.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
-                    <div class="text-blue-500 mb-4">
-                        <i data-feather="cpu" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Computational Semantics</h3>
-                    <p class="text-gray-600">Applying computational methods to understand meaning in Arabic texts, including semantic role labeling.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
-                    <div class="text-blue-500 mb-4">
-                        <i data-feather="database" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Knowledge Graphs</h3>
-                    <p class="text-gray-600">Building structured knowledge representations for Arabic domains, including finance and medicine.</p>
-                </div>
-            </div>
-            
-            <div class="mt-16" data-aos="fade-up">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Current Projects</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-gray-800 mb-2">Detecting ellipsis with large language models</h4>
-                        <p class="text-gray-600 mb-4">Developing methods to identify and reconstruct elided words in Arabic texts using state-of-the-art language models.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">NLP</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Arabic</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">LLMs</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-gray-800 mb-2">Arabic financial knowledge graph</h4>
-                        <p class="text-gray-600 mb-4">Constructing a comprehensive knowledge graph for Arabic financial domains to support information extraction and question answering.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Knowledge Graphs</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Finance</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Arabic NLP</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-gray-500 hover:text-gray-900">
+            <i data-feather="menu"></i>
+          </button>
         </div>
-    </section>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
+        <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Research</a>
+        <a href="#publications" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Publications</a>
+        <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Skills</a>
+        <a href="#teaching" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Teaching</a>
+        <a href="#essays" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Essays</a>
+        <a href="#codes" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Codes</a>
+        <a href="#artifacts" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Artifacts</a>
+        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Publications Section -->
-    <section id="publications" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Selected Publications</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-1">AMWAL: Named Entity Recognition for Arabic Financial News</h3>
-                            <p class="text-gray-600 mb-2">Muhammad S. Abdo, Yash Hatekar, Damir Cavar</p>
-                            <p class="text-sm text-gray-500 mb-2">FinNLP-FNP-LLMFinLegal @ COLING 2025, Abu Dhabi</p>
-                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2025</span>
-                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded ml-2">Workshop</span>
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
-                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
-                                <span>View</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-1">Thus Spoke a Couple: a Corpus-Based Content Analysis of Spousal Duties Fatwas</h3>
-                            <p class="text-gray-600 mb-2">Muhammad S. Abdo, Abdullah Omran, Said F. Hassan</p>
-                            <p class="text-sm text-gray-500 mb-2">Journal of Digital Islamicate Research 1(1-2): 37–65</p>
-                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2024</span>
-                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded ml-2">Journal</span>
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
-                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
-                                <span>View</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-1">The Typology of Ellipsis: A Corpus for Linguistic Analysis and Machine Learning Applications</h3>
-                            <p class="text-gray-600 mb-2">Damir Cavar, Louis V. Mompelat, Muhammad S. Abdo</p>
-                            <p class="text-sm text-gray-500 mb-2">SIGTYP 2024</p>
-                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2024</span>
-                            <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded ml-2">Conference</span>
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
-                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
-                                <span>View</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-1">IUNADI at NADI 2023: Country-level Arabic Dialect Classification in Tweets</h3>
-                            <p class="text-gray-600 mb-2">Yash Hatekar, Muhammad S. Abdo</p>
-                            <p class="text-sm text-gray-500 mb-2">ArabicNLP 2023</p>
-                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2023</span>
-                            <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded ml-2">Conference</span>
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center">
-                                <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
-                                <span>View</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-10" data-aos="fade-up">
-                <a href="https://scholar.google.com/citations?user=yAFbFugAAAAJ" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
-                    <i data-feather="book-open" class="mr-2"></i>
-                    View All Publications on Google Scholar
-                </a>
-            </div>
+  <!-- Hero Section -->
+  <header class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Muhammad S. Abdo</h1>
+          <h2 class="text-2xl md:text-3xl font-semibold text-blue-600 mb-6">Computational Linguist</h2>
+          <p class="text-lg text-gray-700 mb-8">Natural language inference, Arabic NLP, dialect identification, word sense disambiguation, semantics, and knowledge graphs.</p>
+          <div class="flex space-x-4">
+            <a href="#research" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">My Research</a>
+          </div>
         </div>
-    </section>
-
-    <!-- Teaching Section -->
-    <section id="teaching" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Teaching & Positions</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+          <div class="relative">
+            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+              <img src="https://raw.githubusercontent.com/Muhsabrys/mabdo/refs/heads/main/Photos/profile.jpeg" alt="Portrait of Muhammad S. Abdo" class="w-full h-full object-cover" />
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="100">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Current Positions</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800">Associate Instructor of Arabic</h4>
-                            <p class="text-gray-600">MELC, Indiana University</p>
-                            <p class="text-sm text-gray-500">Aug 2023 – present</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">Graduate Assistant</h4>
-                            <p class="text-gray-600">Arabic Flagship Program, Indiana University</p>
-                            <p class="text-sm text-gray-500">Aug 2022 – May 2023</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">Arabic Instructor</h4>
-                            <p class="text-gray-600">Middlebury Summer School</p>
-                            <p class="text-sm text-gray-500">Jun – Aug 2024</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Teaching Focus</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-start">
-                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-1"></i>
-                            <span class="text-gray-700">Task-based Arabic instruction</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-1"></i>
-                            <span class="text-gray-700">Corpus-informed assessment</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i data-feather="check-circle" class="text-green-500 mr-2 mt-1"></i>
-                            <span class="text-gray-700">NLP for Arabic</span>
-                        </div>
-                    </div>
-                    
-                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Previous Experience</h3>
-                    <div class="space-y-2">
-                        <p class="text-gray-600">Business Communication Instructor at Faculty of Engineering, Cairo University (2022)</p>
-                        <p class="text-gray-600">Translation Lecturer at Faculty of Arts, Port Said University (2021)</p>
-                        <p class="text-gray-600">English Instructor at multiple institutions (2016–2022)</p>
-                    </div>
-                </div>
+            <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-md">
+              <div class="flex items-center">
+                <i data-feather="award" class="text-yellow-500 mr-2"></i>
+                <span class="font-medium">PhD Candidate</span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </header>
 
-    <!-- Skills Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Technical Skills</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i data-feather="code" class="mr-2 text-blue-500"></i>
-                        Programming
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Python</span>
-                        <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">C</span>
-                        <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Unix basics</span>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i data-feather="cpu" class="mr-2 text-blue-500"></i>
-                        NLP Tasks
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Web scraping</span>
-                        <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Text classification</span>
-                        <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">NER</span>
-                        <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Sentiment analysis</span>
-                        <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Knowledge graphs</span>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i data-feather="box" class="mr-2 text-blue-500"></i>
-                        Libraries & Tools
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">spaCy</span>
-                        <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">NLTK</span>
-                        <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">Hugging Face</span>
-                        <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">PyTorch</span>
-                        <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">Pandas</span>
-                    </div>
-                </div>
-            </div>
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-6">Biography</h3>
+          <p class="text-gray-600 mb-6">Dual‑major PhD candidate in Computational Linguistics and Middle Eastern Languages & Cultures at Indiana University Bloomington, with a minor in Computer Science. Research targets NLP for Arabic and cross‑lingual settings with an emphasis on natural language inference.</p>
+          <p class="text-gray-600 mb-6">Background in linguistics supports system design and evaluation for Arabic and related languages. Portfolio covers dialect identification, sexism detection, ellipsis detection, sentiment analysis, and public‑opinion analysis. MA work in corpus linguistics examined syntax and emotion in narratives of major and bipolar depression.</p>
+
+          <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+            <h4 class="font-semibold text-blue-800 mb-3 flex items-center">
+              <i data-feather="info" class="mr-2"></i> Quick Facts
+            </h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i data-feather="map-pin" class="text-blue-500 mr-2 mt-1"></i>
+                <span>Bloomington, Indiana, USA</span>
+              </li>
+              <li class="flex items-start">
+                <i data-feather="book" class="text-blue-500 mr-2 mt-1"></i>
+                <span>106 Google Scholar citations</span>
+              </li>
+              <li class="flex items-start">
+                <i data-feather="globe" class="text-blue-500 mr-2 mt-1"></i>
+                <span>Arabic (native), English, Persian</span>
+              </li>
+            </ul>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <div data-aos="fade-left">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-6">Education</h3>
+          <div class="space-y-6">
+            <div class="border-l-4 border-blue-500 pl-5 py-1">
+              <h4 class="font-bold text-gray-800">Dual‑major PhD (Computational Linguistics; Middle Eastern Languages & Cultures) — minor in Computer Science</h4>
+              <p class="text-gray-600">Indiana University Bloomington</p>
+              <p class="text-sm text-gray-500">Aug 2022 – present</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                                <i data-feather="mail" class="text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800">Email</h4>
-                                <a href="mailto:mabdo@iu.edu" class="text-blue-600 hover:text-blue-800">mabdo@iu.edu</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                                <i data-feather="phone" class="text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800">Phone</h4>
-                                <a href="tel:+18125588185" class="text-blue-600 hover:text-blue-800">(812) 558-8185</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                                <i data-feather="map-pin" class="text-blue-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800">Location</h4>
-                                <p class="text-gray-600">Bloomington, Indiana, USA</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-800 mt-10 mb-6">Academic Profiles</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <a href="https://scholar.google.com/citations?user=yAFbFugAAAAJ" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600">
-                            <i data-feather="book-open" class="mr-2"></i>
-                            Google Scholar
-                        </a>
-                        <a href="https://orcid.org/0000-0001-8566-1841" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600">
-                            <i data-feather="user" class="mr-2"></i>
-                            ORCID
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhsabrys" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600">
-                            <i data-feather="linkedin" class="mr-2"></i>
-                            LinkedIn
-                        </a>
-                        <a href="https://indiana.academia.edu/MuhammadSAbdo" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600">
-                            <i data-feather="book" class="mr-2"></i>
-                            Academia.edu
-                        </a>
-                    </div>
-                </div>
-                
-                <div data-aos="fade-left">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Send a Message</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                        </div>
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
+            <div class="border-l-4 border-blue-300 pl-5 py-1">
+              <h4 class="font-bold text-gray-800">MA in English Linguistics</h4>
+              <p class="text-gray-600">Ain Shams University (Al‑Alsun)</p>
+              <p class="text-sm text-gray-500">Jan 2021</p>
             </div>
+            <div class="border-l-4 border-blue-200 pl-5 py-1">
+              <h4 class="font-bold text-gray-800">PGCE (Postgraduate Certificate in Education)</h4>
+              <p class="text-gray-600">Monofiya University</p>
+              <p class="text-sm text-gray-500">Aug 2018</p>
+            </div>
+            <div class="border-l-4 border-blue-100 pl-5 py-1">
+              <h4 class="font-bold text-gray-800">BA in English Language and Literature</h4>
+              <p class="text-gray-600">Benha University</p>
+              <p class="text-sm text-gray-500">Jun 2013</p>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-semibold text-gray-800 mt-10 mb-6">Affiliations</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">Indiana University Bloomington — Linguistics</span>
+            <span class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700">Indiana University Bloomington — MELC</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Muhammad S. Abdo</h3>
-                    <p class="text-gray-400">Computational Linguist specializing in Arabic NLP, with expertise in dialect identification, word sense disambiguation, and computational semantics.</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
-                        <li><a href="#research" class="text-gray-400 hover:text-white transition duration-300">Research</a></li>
-                        <li><a href="#publications" class="text-gray-400 hover:text-white transition duration-300">Publications</a></li>
-                        <li><a href="#teaching" class="text-gray-400 hover:text-white transition duration-300">Teaching</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Connect</h3>
-                    <div class="flex space-x-4">
-                        <a href="https://www.linkedin.com/in/muhsabrys" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
-                            <i data-feather="linkedin"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=yAFbFugAAAAJ" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
-                            <i data-feather="book-open"></i>
-                        </a>
-                        <a href="https://orcid.org/0000-0001-8566-1841" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
-                            <i data-feather="user"></i>
-                        </a>
-                        <a href="mailto:mabdo@iu.edu" class="text-gray-400 hover:text-white transition duration-300">
-                            <i data-feather="mail"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
-                <p>&copy; 2025 Muhammad S. Abdo. All rights reserved.</p>
-            </div>
+  <!-- Essays Section -->
+  <section id="essays" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Essays & Interactive Analytics</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Data‑driven essays and visualizations.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300" data-aos="fade-up">
+          <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+            <i data-feather="bar-chart-2" class="text-white w-16 h-16"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Arabic Dialect Distribution</h3>
+            <p class="text-gray-600 mb-4">Interactive views over usage patterns on social media.</p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">Explore<i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-        
-        feather.replace();
-        
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3b82f6,
-            backgroundColor: 0xf8fafc,
-            points: 10.00,
-            maxDistance: 20.00,
-            spacing: 15.00
-        });
-        
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-    </script>
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-48 bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center">
+            <i data-feather="trending-up" class="text-white w-16 h-16"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Crisis Discourse Sentiment</h3>
+            <p class="text-gray-600 mb-4">Time‑series analyses for public messages during global events.</p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">View<i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-48 bg-gradient-to-r from-amber-400 to-orange-500 flex items-center justify-center">
+            <i data-feather="book-open" class="text-white w-16 h-16"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Lexical Bundles in CL Papers</h3>
+            <p class="text-gray-600 mb-4">Compact analyses for collocational patterns in publications.</p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">Read<i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Codes Section -->
+  <section id="codes" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Code Repository</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Open‑source tools and scripts for computational linguistics.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300" data-aos="fade-right">
+          <div class="flex items-start">
+            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+              <i data-feather="code" class="text-blue-600 w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Arabic Dialect Classifier</h3>
+              <p class="text-gray-600 mb-4">Models for dialect identification in social text with strong baselines.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">scikit‑learn</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Transformers</span>
+              </div>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">GitHub<i data-feather="github" class="ml-2 w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300" data-aos="fade-left">
+          <div class="flex items-start">
+            <div class="bg-green-100 p-3 rounded-lg mr-4">
+              <i data-feather="database" class="text-green-600 w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Arabic Collocations Extractor</h3>
+              <p class="text-gray-600 mb-4">Pipelines for collocation analysis over curated corpora.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">spaCy</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">NLTK</span>
+              </div>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">GitHub<i data-feather="github" class="ml-2 w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300" data-aos="fade-right">
+          <div class="flex items-start">
+            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+              <i data-feather="cpu" class="text-purple-600 w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Ellipsis Detector</h3>
+              <p class="text-gray-600 mb-4">Contextual models that recover elided material in Arabic text.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">PyTorch</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Transformers</span>
+              </div>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">GitHub<i data-feather="github" class="ml-2 w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300" data-aos="fade-left">
+          <div class="flex items-start">
+            <div class="bg-amber-100 p-3 rounded-lg mr-4">
+              <i data-feather="bar-chart-2" class="text-amber-600 w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Sentiment Toolkit</h3>
+              <p class="text-gray-600 mb-4">Multilingual sentiment libraries with Arabic‑aware preprocessing.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Python</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">FastAPI</span>
+                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Docker</span>
+              </div>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">GitHub<i data-feather="github" class="ml-2 w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Artifacts Section -->
+  <section id="artifacts" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Research Artifacts</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Datasets, corpora, and resources from current and past projects.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="border border-gray-200 rounded-xl p-6 hover:border-blue-300 transition duration-300" data-aos="fade-up">
+          <div class="flex items-center mb-4">
+            <div class="bg-blue-100 p-2 rounded-lg mr-3"><i data-feather="database" class="text-blue-600 w-5 h-5"></i></div>
+            <h3 class="text-lg font-semibold text-gray-800">Arabic Collocations Corpus</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Educational domain corpus with ≈120k tokens and collocation metadata.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">≈120k tokens</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Education</span>
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl p-6 hover:border-blue-300 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <div class="bg-green-100 p-2 rounded-lg mr-3"><i data-feather="activity" class="text-green-600 w-5 h-5"></i></div>
+            <h3 class="text-lg font-semibold text-gray-800">Arabic WSD — Medical</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Sense‑annotated set with ≈18k sentences in the medical domain.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">≈18k sentences</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Health</span>
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl p-6 hover:border-blue-300 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-2 rounded-lg mr-3"><i data-feather="message-square" class="text-purple-600 w-5 h-5"></i></div>
+            <h3 class="text-lg font-semibold text-gray-800">Egyptian Dialect Social Text</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Large social corpus for dialect work with access on request.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">≈250k posts</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Social media</span>
+          </div>
+        </div>
+      </div>
+      <!-- Removed bottom CTA per request -->
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Research Interests</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="globe" class="w-8 h-8"></i></div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Arabic NLP</h3>
+          <p class="text-gray-600">Tools and models for Arabic with coverage for dialects and morphology.</p>
+        </div>
+
+        <!-- Removed Collocations card per request -->
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="code" class="w-8 h-8"></i></div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Word Sense Disambiguation</h3>
+          <p class="text-gray-600">Algorithms that select context‑appropriate senses for Arabic words.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="map" class="w-8 h-8"></i></div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Dialect Identification</h3>
+          <p class="text-gray-600">Classification pipelines for dialect labels in social text.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="cpu" class="w-8 h-8"></i></div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Computational Semantics</h3>
+          <p class="text-gray-600">Meaning representation for Arabic with semantic role labeling.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-200 transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="database" class="w-8 h-8"></i></div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Knowledge Graphs</h3>
+          <p class="text-gray-600">Structured representations for finance and medicine in Arabic contexts.</p>
+        </div>
+      </div>
+
+      <div class="mt-16" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Current Projects</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h4 class="font-bold text-gray-800 mb-2">Ellipsis with Large Language Models</h4>
+            <p class="text-gray-600 mb-4">Methods that detect elided material and propose restorations for Arabic text.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">NLI</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">LLMs</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Arabic</span>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h4 class="font-bold text-gray-800 mb-2">Arabic Financial Knowledge Graph</h4>
+            <p class="text-gray-600 mb-4">Pipelines for entity and relation extraction with temporal updates.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">IE</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">KG</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Finance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section id="publications" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Selected Publications</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-1">AMWAL: Named Entity Recognition for Arabic Financial News</h3>
+              <p class="text-gray-600 mb-2">Muhammad S. Abdo, Yash Hatekar, Damir Cavar</p>
+              <p class="text-sm text-gray-500 mb-2">FinNLP‑FNP‑LLMFinLegal @ COLING 2025, Abu Dhabi</p>
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2025</span>
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded ml-2">Workshop</span>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center"><i data-feather="external-link" class="w-4 h-4 mr-1"></i><span>View</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-1">Thus Spoke a Couple: a Corpus‑Based Content Analysis of Spousal Duties Fatwas</h3>
+              <p class="text-gray-600 mb-2">Muhammad S. Abdo, Abdullah Omran, Said F. Hassan</p>
+              <p class="text-sm text-gray-500 mb-2">Journal of Digital Islamicate Research 1(1‑2): 37–65</p>
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2024</span>
+              <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded ml-2">Journal</span>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center"><i data-feather="external-link" class="w-4 h-4 mr-1"></i><span>View</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-1">The Typology of Ellipsis: A Corpus for Linguistic Analysis and Machine Learning Applications</h3>
+              <p class="text-gray-600 mb-2">Damir Cavar, Louis V. Mompelat, Muhammad S. Abdo</p>
+              <p class="text-sm text-gray-500 mb-2">SIGTYP 2024</p>
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2024</span>
+              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded ml-2">Conference</span>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center"><i data-feather="external-link" class="w-4 h-4 mr-1"></i><span>View</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-card bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition duration-300">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-1">IUNADI at NADI 2023: Country‑level Arabic Dialect Classification in Tweets</h3>
+              <p class="text-gray-600 mb-2">Yash Hatekar, Muhammad S. Abdo</p>
+              <p class="text-sm text-gray-500 mb-2">ArabicNLP 2023</p>
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">2023</span>
+              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded ml-2">Conference</span>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center"><i data-feather="external-link" class="w-4 h-4 mr-1"></i><span>View</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10" data-aos="fade-up">
+        <a href="https://scholar.google.com/citations?user=yAFbFugAAAAJ" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300">
+          <i data-feather="book-open" class="mr-2"></i>
+          View All on Google Scholar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section (moved above Teaching) -->
+  <section id="skills" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Technical Skills</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i data-feather="cpu" class="mr-2 text-blue-500"></i> LLMs & Tooling</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Transformers</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Hugging Face</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">PEFT/LoRA</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">vLLM</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">OpenAI API</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Llama</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Mistral</span>
+            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full">RAG</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i data-feather="edit-3" class="mr-2 text-blue-500"></i> Data & Annotation</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Label Studio</span>
+            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Prodigy</span>
+            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Schema design</span>
+            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">IAA & adjudication</span>
+            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Corpus curation</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i data-feather="check-circle" class="mr-2 text-blue-500"></i> Evaluation & Safety</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">NLI benchmarks</span>
+            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">F1 / MCC</span>
+            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">Calibration</span>
+            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">Bias & toxicity checks</span>
+            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full">Human‑in‑the‑loop</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-8 flex items-center"><i data-feather="code" class="mr-2 text-blue-500"></i> Programming</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Python</span>
+            <span class="skill-pill bg-gray-100 text-gray-800 px-3 py-1 rounded-full">C</span>
+            <span class="skill-pill bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Unix</span>
+            <span class="skill-pill bg-gray-100 text-gray-800 px-3 py-1 rounded-full">PyTorch</span>
+            <span class="skill-pill bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Pandas</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-8 flex items-center"><i data-feather="sliders" class="mr-2 text-blue-500"></i> MLOps & Serving</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-amber-100 text-amber-800 px-3 py-1 rounded-full">FastAPI</span>
+            <span class="skill-pill bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Docker</span>
+            <span class="skill-pill bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Ray</span>
+            <span class="skill-pill bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Weights & Biases</span>
+            <span class="skill-pill bg-amber-100 text-amber-800 px-3 py-1 rounded-full">MLflow</span>
+            <span class="skill-pill bg-amber-100 text-amber-800 px-3 py-1 rounded-full">Triton</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 mt-8 flex items-center"><i data-feather="layers" class="mr-2 text-blue-500"></i> NLP Tasks</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">NLI</span>
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Text classification</span>
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">NER</span>
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">WSD</span>
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Sentiment</span>
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Dialect ID</span>
+            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Information extraction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching Section -->
+  <section id="teaching" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Teaching & Positions</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Current Positions</h3>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-bold text-gray-800">Associate Instructor of Arabic</h4>
+              <p class="text-gray-600">MELC, Indiana University</p>
+              <p class="text-sm text-gray-500">Aug 2023 – present</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Graduate Assistant</h4>
+              <p class="text-gray-600">Arabic Flagship Program, Indiana University</p>
+              <p class="text-sm text-gray-500">Aug 2022 – May 2023</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Arabic Instructor</h4>
+              <p class="text-gray-600">Middlebury Summer School</p>
+              <p class="text-sm text-gray-500">Jun – Aug 2024</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Teaching Focus</h3>
+          <div class="space-y-3">
+            <div class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-1"></i><span class="text-gray-700">Task‑based Arabic instruction</span></div>
+            <div class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-1"></i><span class="text-gray-700">Corpus‑informed assessment</span></div>
+            <div class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-1"></i><span class="text-gray-700">NLP for Arabic</span></div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Previous Experience</h3>
+          <div class="space-y-2">
+            <p class="text-gray-600">Business Communication Instructor, Faculty of Engineering, Cairo University (2022)</p>
+            <p class="text-gray-600">Translation Lecturer, Faculty of Arts, Port Said University (2021)</p>
+            <p class="text-gray-600">English Instructor at multiple institutions (2016–2022)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Contact</h2>
+        <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-blue-100 p-3 rounded-lg mr-4"><i data-feather="mail" class="text-blue-600"></i></div>
+              <div>
+                <h4 class="font-medium text-gray-800">Email</h4>
+                <a href="mailto:mabdo@iu.edu" class="text-blue-600 hover:text-blue-800">mabdo@iu.edu</a>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-blue-100 p-3 rounded-lg mr-4"><i data-feather="map-pin" class="text-blue-600"></i></div>
+              <div>
+                <h4 class="font-medium text-gray-800">Location</h4>
+                <p class="text-gray-600">Bloomington, Indiana, USA</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-semibold text-gray-800 mt-10 mb-6">Academic Profiles</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <a href="https://scholar.google.com/citations?user=yAFbFugAAAAJ" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600"><i data-feather="book-open" class="mr-2"></i>Google Scholar</a>
+            <a href="https://orcid.org/0000-0001-8566-1841" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600"><i data-feather="user" class="mr-2"></i>ORCID</a>
+            <a href="https://www.linkedin.com/in/muhsabrys" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600"><i data-feather="linkedin" class="mr-2"></i>LinkedIn</a>
+            <a href="https://indiana.academia.edu/MuhammadSAbdo" target="_blank" class="flex items-center text-gray-700 hover:text-blue-600"><i data-feather="book" class="mr-2"></i>Academia.edu</a>
+          </div>
+        </div>
+
+        <!-- Removed contact form per request -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Muhammad S. Abdo</h3>
+          <p class="text-gray-400">Computational linguist with focus on natural language inference and Arabic NLP.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+            <li><a href="#research" class="text-gray-400 hover:text-white transition duration-300">Research</a></li>
+            <li><a href="#publications" class="text-gray-400 hover:text-white transition duration-300">Publications</a></li>
+            <li><a href="#skills" class="text-gray-400 hover:text-white transition duration-300">Skills</a></li>
+            <li><a href="#teaching" class="text-gray-400 hover:text-white transition duration-300">Teaching</a></li>
+            <li><a href="#essays" class="text-gray-400 hover:text-white transition duration-300">Essays</a></li>
+            <li><a href="#codes" class="text-gray-400 hover:text-white transition duration-300">Codes</a></li>
+            <li><a href="#artifacts" class="text-gray-400 hover:text-white transition duration-300">Artifacts</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Connect</h3>
+          <div class="flex space-x-4">
+            <a href="https://www.linkedin.com/in/muhsabrys" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i data-feather="linkedin"></i></a>
+            <a href="https://scholar.google.com/citations?user=yAFbFugAAAAJ" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i data-feather="book-open"></i></a>
+            <a href="https://orcid.org/0000-0001-8566-1841" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i data-feather="user"></i></a>
+            <a href="mailto:mabdo@iu.edu" class="text-gray-400 hover:text-white transition duration-300"><i data-feather="mail"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+        <p>&copy; 2025 Muhammad S. Abdo. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    feather.replace();
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x3b82f6,
+      backgroundColor: 0xf8fafc,
+      points: 10.00,
+      maxDistance: 20.00,
+      spacing: 15.00
+    });
+    document.getElementById('menu-toggle').addEventListener('click', function(){
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
